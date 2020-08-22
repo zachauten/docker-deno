@@ -1,0 +1,24 @@
+name: push
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  build:
+    name: push to github packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: clone repo
+        uses: actions/checkout@v2
+
+      - name: push to github packages
+        uses: docker/build-push-action@v1.1.0
+        with:
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+          registry: docker.pkg.github.com
+          repository: zachauten/docker-deno/docker-deno
+          tag_with_ref: true
+
