@@ -1,4 +1,4 @@
-name: push
+name: publish
 
 on:
   push:
@@ -19,6 +19,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ github.token }}
           registry: docker.pkg.github.com
-          repository: zachauten/docker-deno/docker-deno
+          repository: zachauten/docker-deno/deno
           tag_with_ref: true
 
